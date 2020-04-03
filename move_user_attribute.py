@@ -12,15 +12,15 @@ def get_developer_user_ids():
 
 user_attributes = [user_attribute.name for user_attribute in sdk.all_user_attributes(fields='name')]
 if('can_see_api_explore' not in user_attributes):
-  sdk.create_user_attribute(body={
-    "name": 'can_see_api_explore',
-    "label": 'Can See API Explore',
-    "type": 'string',
-    "default_value": 'no',
-    "value_is_hidden": False,
-    "user_can_view": True,
-    "user_can_edit": False
-  })
+  sdk.create_user_attribute(looker_sdk.models.WriteUserAttribute(
+    name= 'can_see_api_explore',
+    label= 'Can See API Explore',
+    type= 'string',
+    default_value= 'no',
+    value_is_hidden= False,
+    user_can_view= True,
+    user_can_edit= False
+  ))
   print("Created user attribute can_see_api_explore")
 
 can_see_api_explore_user_attribute_id = -1
